@@ -24,7 +24,7 @@
  - IPFS, IPNS, and Libp2p - update advertisement and replication
  - IPFS and Filecoin - backup and reliable hosting of replicas
 
-The project is written in typescript, and compiled into javascript. It is to be robust, maintainable, and easy for developers to start using.
+The project is written in typescript, and compiled into javascript. It will be robust, maintainable, and easy for developers to start using.
 This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) that they ended up not accepting.
 Opal is not a fork of OrbitDB; it's is a complete rewrite and repurpose focused on efficiently representing arbitrary states. Opal will not yet be interoperable with OrbitDB.
 
@@ -58,7 +58,7 @@ These two abilities make it possible to create compelling, edge-computed apps.
 
 The architecture described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas for replication.
 This design centers around edge computers with more general machines pinning and keeping the data available.
-Applications this architecture is best-suited fall into the media or communication, things like most of Google's app suite.
+Applications this architecture is best-suited fall into the media or communication, like most of Google's app suite.
 
 Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS. The user has control over their data with the choice to self-host. The local replica is the source of truth, sometimes called local-first.
 
@@ -73,20 +73,20 @@ Persistent replication is needed, and there are two ways to do it.
 The first is continuing the pinning service idea, where you have servers to keep online with a list of databases to replicate.
 These servers run replication algorithms that work over pubsub and IPFS.
 If those pinners are online, then the data is available and can be replicated.
-This solution is not terrible as it has some benefits, but it is better called 'persisted replication' since the pieces used for replication, pubsub and unpinned/unreliably hosted IPFS, are not persistent.
+This solution is not terrible as it has some benefits, but it is better called 'persisted replication' since pubsub messages are not persistent.
 
 The second solution for persistent replication has to do with swapping pubsub for IPNS.
-Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in-place, and the IPNS and IPFS data is pinned.
+Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in-place, with the IPNS records and IPFS data being pinned.
 Another advantage here is that IPFS and IPNS are more general layers and don't require building up infrastructure and support.
 
 Because the work done for OrbitDB under a previous grant was not accepted, doing this with OrbitDB would be very difficult due to some tight coupling.
-Opal is much more modular when compared, especially with replication, which makes OrbitDB a bad fit for this use currently.
+Opal is much more modular when compared, especially with replicationy.
 
 Opal also includes incremental traversal of the Merkle-DAG in either direction.
-This traversal is not part of OrbitDB, and is probably the most significant change from that previous grant work.
+This type of traversal is not part of OrbitDB, and is probably the most significant change from that previous grant work.
 Incremental traversal allows for database entries to be kept out of memory and streamed when needed by traversing a graph of CIDs.
 
-The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new, will likely use CAR files, and require updating IPNS records.
+The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new, will involve CAR files and updating IPNS records.
 
 <!-- - What are the risks if you don't get it right? -->
 
@@ -144,8 +144,9 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 
 <!-- Specify your team's long-term plans to maintain this software and upgrade it over time. -->
 
-This grant will build a foundation that will define the base features and keep the project hyper-maintainable over the years. After the project reaches this level of maintainability, the key is cultivating a user base.
-Acquiring users will require gaining exposure while providing good docs and a helpful community chat.
+This grant will build a foundation that will define the base features and keep the project hyper-maintainable over the years.
+After the project reaches this level of maintainability, the key is cultivating a user base.
+Acquiring users will require exposure while providing documentation, a helpful community chat, and a valueable tool with great developer experience.
 
 Following release there will still be room for improvement:
 
@@ -178,7 +179,7 @@ Daniel, [@tabcat](https://github.com/tabcat)
 
 <!-- Please describe (in words) your team's relevant experience, and why you think you are the right team to build this project. You can cite your team's prior experience in similar domains, doing similar dev work, individual team members' backgrounds, etc. -->
 
-Daniel, also known as Anders, has been involved with OrbitDB since finding it in late 2018, shortly after diving into IPFS.
+Daniel, has been involved with OrbitDB since finding it in late 2018, shortly after diving into IPFS.
 
 > In March 2020, I started working on a collaborative filesystem on top of IPFS using OrbitDB. In July 2020, a partner and I leveraged this to build [`sailplane`](https://cypsela.github.io/sailplane-web/), a p2p Dropbox-like web app that made us finalists in the first HackFS.
 >
