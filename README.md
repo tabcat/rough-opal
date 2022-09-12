@@ -4,4 +4,4 @@ monorepo for tracking my grant applications and processes
 ---
 
 Grants:
-- [Opal Init](./rough-opal)
+- [Rough Opal](./rough-opal)
