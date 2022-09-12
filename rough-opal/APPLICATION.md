@@ -104,7 +104,7 @@ The exact features that will be delivered of each are defined in the following i
 
 [`Opal` Base Feature Set](https://github.com/cypsela/opal/issues/8)
 
-[`Zzzync` First Release](https://github.com/tabcat/zzzync/issues/2)
+[`Zzzync` Development Plans](https://github.com/tabcat/zzzync/issues/2)
 
 There will also be a monthly status issue in the Opal repo. The monthly issues will track what is being worked on and completed. Here is [September's Status](https://github.com/cypsela/opal/issues/1).
 
@@ -118,23 +118,40 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 <!-- - How much time this milestone will take to achieve (using real dates) -->
 
 **(SEPT 2022)** Opal Repo Init
- - set up automation for docs, linting, formatting
- - prep for adding features
- - make databases locally persistent
+  - set up linting/formatting
+  - configure typescript
+  - write unit tests
+  - prep for adding features
+    - build interfaces for manifest modules
+    - rewrite manifest module registry
+    - rework store module
+    - rework classes to use Libp2p's startable interface
+  - make databases locally persistent
 
 **(OCT 2022)** Opal Replication and Perf
- - add basic replicator (Libp2p pubsub + IPFS)
- - test replication and replicated database states
- - write benchmarks
+  - add basic replicator (Libp2p pubsub + IPFS)
+  - test replication and replicated states
+  - write benchmarks
+  - automate release with generated api docs and changelog
+  - release alpha with expected public api changes
 
 **(NOV 2022)** Zzzync Replicator
- - replicator using IPFS/IPNS pinning on web3.storage
- - write tests for Zzzync and interop tests for Opal
+  - begin design of replicator
+  - choose a design to start building
+  - set up linting/formatting
+  - configure typescript
+  - write implementation of design
+  - write unit tests
+  - test interop with Opal
+  - write benchmarks
+  - automate release with generated api docs and changelog
+  - release alpha with expected public api changes
 
 **(DEC 2022)** Heavy Testing
- - testing inside network simulation with testground
- - stress-test and benchmark replicators
- - check for replication bugs and perf improvements
+  - network simulated testing with testground
+  - stress-test and benchmark replicators
+  - check for replication bugs and perf improvements
+  - release Opal and Zzzync beta with public api locked
 
 ## Total Budget Requested
 
