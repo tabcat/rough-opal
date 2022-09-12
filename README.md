@@ -1,2 +1,7 @@
 # grant-applications
-organize and track my grant applications and processes
+monorepo for tracking my grant applications and processes
+
+---
+
+Grants:
+- [Opal Init](./opal-init)
