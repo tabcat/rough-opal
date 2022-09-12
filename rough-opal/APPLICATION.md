@@ -25,19 +25,25 @@
  - IPFS, IPNS and Libp2p - update advertisement and replication
  - IPFS and Filecoin - backup and reliable hosting of replicas
 
-The project is being written in typescript and is meant to be robust, maintainable, and easy for developers to start using. It is inspired by [OrbitDB](https://github.com/orbitdb/orbit-db) but will not be interoperable with it.
+The project is being written in typescript, which is then compiled to javascript. It is meant to be robust, maintainable, and easy for developers to start using.
+This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) that they ended up not accepting.
+This is not a fork of OrbitDB, it is a complete rewrite and repurpose focused on efficiently representing arbitrary states. It is not yet meant to be interoperable with OrbitDB.
 
-Merkle-CRDTs are at the heart of the project.
+Merkle-CRDTs are still at the heart of the project.
 This data-structure is a combination of [Merkle-DAGs](https://docs.ipfs.tech/concepts/merkle-dag/) and [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type).
 It provides causal order and de-duplication of operations and it ensures [strong eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency#Strong_eventual_consistency).
 
 The project will provide these two abilities as part of this grant:
 
 **Developers will be able to model custom states, similar to how Redux reducers are used.**
-These states are computed by reading the replica's causal log of operations. This log can be updated online or offline and then merged/synced at a later point.
+They can supply a way to reduce a state and methods to read the state.
+These states are computed by reading the replica's causal log of operations.
+This log can be updated online or offline and then merged/synced at a later point.
 
 **Developers will be able to pin user replicas to reliable storage backends.**
-Each device can pin their replica and update their own IPNS record. This allows peers to replicate with nodes that have gone offline.
+Each device can pin their replicas as CAR files and update their IPNS record.
+This allows peers to replicate with nodes that have gone offline.
+Data persistence has been an issue for peer-to-peer databases and persistant replication is a big step forward.
 
 With these two abilites, it's possible to create compelling, edge-computed apps.
 
@@ -57,12 +63,30 @@ Applications this architecture is best-suited usually fall into the media or com
 
 Building software this way has a few nice characteristics and goes hand in hand with delay-tolerant network designs like IPFS. The user has control over their data with the choice to pretty easily self-host. Any updates made locally are treated as the source of truth, sometimes called local-first.
 
-While local-first applications can provide excellent UX, there are still areas that may need to be handled carefully by developers. When working with operation logs like this one, it can take time to merge with a peer that has been offline for a while or is just joining the database, depending on the number of entries that have been made.
+Using Opal, developers will be able to define the state reducer for a database.
+A state reducer is a function that takes a state and an operation and returns a new state.
+UI components that need to be collaborative, whether that be between other users or a user's own devices, can use Opal to derive its state.
 
-There are also fundamental limits, and some applications cannot be modelled due to invariant confluence. To be invariant confluent an appliction must be able to apply any 2 messages asynchronously without invalidating the applications invarients.
-For example, an invariant of blockchains is that no account can have a negative balance. This invariant is not confluent since there could be 2 messages subtracting from a balance; where separately applied the balance stays above 0, but applying them together results in a negative balance.
+A big issue with peer-to-peer database like OrbitDB is that if no other devices are online then you can't replicate anything!
+Persistent replication is needed and there are two ways to do it.
 
-The most difficult part to deliver for this grant will be the persisted replication piece. This is the part that involves uploading the replica, as its updated, to pinning services. It's totally new, will likely use CAR files and involve updating IPNS records.
+The first is continuing the pinning service idea, where you have servers to keep online with a list of databases to replicate.
+These servers run replication algorithms that work over pubsub and IPFS.
+As long as those pinners are online then the data is available and can be replicated.
+This solution is not always bad as it has some benefits, but might better be called 'persisted replication' since the pieces used for replication, pubsub and unpinned IPFS, are not persistent.
+
+The second solution for persistent replication has to do with swapping pubsub for IPNS.
+Instead of a node advertising the latest known heads over pubsub, IPNS is used in-place and the IPNS and IPFS replica data is pinned.
+Another advantage here is that IPFS and IPNS are more general layers and don't require building up more infrastructure and support.
+
+Because the work done for OrbitDB under a previous grant was not accepted by them, doing this with OrbitDB would be very difficult due to some tight coupling.
+Opal is much more modular when compared, especially with replication, which is the reason for not continuing with OrbitDB.
+
+Opal also includes incremental traversal of the Merkle-DAG in either direction.
+This is not part of OrbitDB and is probably the largest change from that previous grant work done.
+Incremental traversal allows for database entries to be kept out of memory, and streamed when needed by traversing a graph of CIDs.
+
+The most difficult part to deliver for this grant will be the persistent replication piece. This is the part that involves uploading the replica, as its updated, to pinning services. It's totally new, will likely use CAR files and involve updating IPNS records.
 
 <!-- - What are the risks if you don't get it right? -->
 
@@ -129,16 +153,15 @@ Nearer future (~2.0):
  - active replication: implementing the replication algorithm described in [Byzantine Eventual Consistency](https://arxiv.org/pdf/2012.00472.pdf), involves pushing data that is missed by a peers bloom filter. good for applications that want less latency, e.g. messaging.
  - encrypted Merkle-CRDT: using a group encryption algorithm like [Key Agreement for Decentralized Secure Group Messaging](https://martin.kleppmann.com/2021/11/17/decentralized-key-agreement.html), which should fit quite nicely.
  - dynamic access control: update access control lists without affecting operation history
+ - efficient predecessor referencing: allow quicker traversal and replication of the merkle-dag by picking references smartly, thanks to [science](https://kodu.ut.ee/~lipmaa/papers/thesis/thesis.pdf).
  - graphsync replicator: using graphsync to improve replicator performance.
 
 Further future (~3.0):
  - dynamic topological sort: would involve maintaining a topological sort of the DAG as entries are merged. unsure if this can be done deterministically but willing to do some digging. the only paper I've found on this is [A Dynamic Topological Sort Algorithm for
 Directed Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf) and will need to revisit.
  - finality gadgets: this would look at the best ways to migrate databases without too many side-affects.
- - CBOR CRDT: a CBOR state where each field in the CBOR object is fully merge-able
+ - CBOR CRDT: a CBOR state where each field in the CBOR object is fully merge-able.
  - cross-log causality: use randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
-
-Following the full 1.0 release there will still be room for improvement:
 
 # Team
 
