@@ -133,6 +133,7 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
   - test replication and replicated states
   - write benchmarks
   - automate release with generated api docs and changelog
+  - working draft spec documents for opal and main modules
   - release alpha with expected public api changes
 
 **(NOV 2022)** Zzzync Replicator
@@ -145,13 +146,21 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
   - test interop with Opal
   - write benchmarks
   - automate release with generated api docs and changelog
+  - draft spec document
   - release alpha with expected public api changes
 
-**(DEC 2022)** Heavy Testing
-  - network simulated testing with testground
-  - stress-test and benchmark replicators
-  - check for replication bugs and perf improvements
-  - release Opal and Zzzync beta with public api locked
+**(DEC 2022)**
+  - Heavy Testing
+    - network simulated testing with testground
+    - stress-test and benchmark replicators
+    - check for replication bugs and perf improvements
+  - Usage References
+    - Opal and Zzzync automated (and nice-looking) api docs
+    - Write base FAQ.md document for common user questions
+    - Basic Tutorial document added to repo or blogged
+    - NodeJS and Create React App examples
+  - Complete pre 1.0 Opal and Zzzync specifications
+  - Release Opal and Zzzync beta with public api locked until 1.0
 
 ## Total Budget Requested
 
