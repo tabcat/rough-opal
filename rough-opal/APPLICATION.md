@@ -88,6 +88,8 @@ Incremental traversal allows for database entries to be kept out of memory and s
 
 The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new, will involve CAR files and updating IPNS records.
 
+<img src="./.assets/architecture-diagram.png" alt="architecture diagram" width="700" />
+
 <!-- - What are the risks if you don't get it right? -->
 
 <!-- - What are the risks that will make executing on this project difficult? -->
