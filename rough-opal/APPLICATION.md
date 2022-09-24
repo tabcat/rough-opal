@@ -72,7 +72,7 @@ This collaboration can be between users or a user's devices.
 A big issue with peer-to-peer databases like OrbitDB is that if no other devices are online, you can't replicate anything!
 Persistent replication is needed, and there are two ways to do it.
 
-The first is continuing the pinning service idea, where you have servers to keep online with a list of databases to replicate.
+The first is continuing the pinning service idea, where you have Opal instances to keep online with a list of databases to replicate.
 These servers run replication algorithms that work over pubsub and IPFS.
 If those pinners are online, then the data is available and can be replicated.
 This solution is not terrible as it has some benefits, but it is better called 'persisted replication' since pubsub messages are not persistent.
@@ -82,7 +82,7 @@ Instead of a node advertising the latest known heads over pubsub, IPNS becomes u
 Another advantage here is that IPFS and IPNS are more general layers and don't require building up infrastructure and support.
 
 Because the work done for OrbitDB under a previous grant was not accepted, doing this with OrbitDB would be very difficult due to some tight coupling.
-Opal is much more modular when compared, especially with replicationy.
+Opal is much more modular when compared, especially with replication.
 
 Opal also includes incremental traversal of the Merkle-DAG in either direction.
 This type of traversal is not part of OrbitDB, and is probably the most significant change from that previous grant work.
