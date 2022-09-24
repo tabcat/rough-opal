@@ -81,6 +81,8 @@ Another advantage here is that IPFS and IPNS are more general layers and don't r
 
 <img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777" />
 
+*With the ability to backup and update Merkle-CRDT replicas, peers can read and merge the replicas of peers that have gone offline.*
+
 --- 
 
 Because the work done for OrbitDB under a previous grant was not accepted, doing this with OrbitDB would be very difficult due to some tight coupling.
