@@ -57,8 +57,10 @@ These two abilities make it possible to create compelling, edge-computed apps.
 <!-- - What are the benefits to getting this right? -->
 
 The architecture described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas for replication.
-This design centers around edge computers with more general machines pinning and keeping the data available.
+This design centers around edge computers processing and updating data, with more general machines pinning and keeping the data available.
 Applications this architecture is best-suited fall into the media or communication, like most of Google's app suite.
+
+<img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777" />
 
 Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS. The user has control over their data with the choice to self-host. The local replica is the source of truth, sometimes called local-first.
 
@@ -87,8 +89,6 @@ This type of traversal is not part of OrbitDB, and is probably the most signific
 Incremental traversal allows for database entries to be kept out of memory and streamed when needed by traversing a graph of CIDs.
 
 The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new, will involve CAR files and updating IPNS records.
-
-<img src="./.assets/architecture-diagram.png" alt="architecture diagram" width="700" />
 
 <!-- - What are the risks if you don't get it right? -->
 
