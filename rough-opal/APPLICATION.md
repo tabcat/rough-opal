@@ -60,8 +60,6 @@ The architecture described previously combines Merkle-CRDTs with reliable hostin
 This design centers around edge computers processing and updating data, with more general machines pinning and keeping the data available.
 Applications this architecture is best-suited fall into the media or communication, like most of Google's app suite.
 
-<img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777" />
-
 Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS. The user has control over their data with the choice to self-host. The local replica is the source of truth, sometimes called local-first.
 
 Using Opal, developers will be able to define the state reducer for a database.
@@ -80,6 +78,10 @@ This solution is not terrible as it has some benefits, but it is better called '
 The second solution for persistent replication has to do with swapping pubsub for IPNS.
 Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in-place, with the IPNS records and IPFS data being pinned.
 Another advantage here is that IPFS and IPNS are more general layers and don't require building up infrastructure and support.
+
+<img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777" />
+
+--- 
 
 Because the work done for OrbitDB under a previous grant was not accepted, doing this with OrbitDB would be very difficult due to some tight coupling.
 Opal is much more modular when compared, especially with replication.
