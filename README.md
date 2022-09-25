@@ -3,8 +3,8 @@
 
 </br>
 
-| PROPOSAL:  | [./APPLICATION.md](./APPLICATION.md) |
-| --- | --- |
+| PROPOSAL: | [APPLICATION.md](./APPLICATION.md) |
+| --- | ---: |
 | STATUS:  | PRE-SUBMISSION |
 | SUBMITTED: | `N/A` |
 | DURATION: | SEPT-DEC 2022 |
