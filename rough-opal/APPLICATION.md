@@ -25,12 +25,12 @@
  - IPFS and Filecoin - backup and reliable hosting of replicas
 
 The project is written in typescript, and compiled into javascript. It will be robust, maintainable, and easy for developers to start using.
-This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) that they ended up not accepting.
-Opal is not a fork of OrbitDB; it's is a complete rewrite and repurpose focused on efficiently representing arbitrary states. Opal will not yet be interoperable with OrbitDB.
+This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) they did not accept.
+Opal is not a fork of OrbitDB; it is a complete rewrite focused on efficiently representing arbitrary states. Opal will not be interoperable with OrbitDB.
 
 Merkle-CRDTs are still at the heart of the project.
 This data-structure is a combination of [Merkle-DAGs](https://docs.ipfs.tech/concepts/merkle-dag/) and [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type).
-It provides causal order and de-duplication of operations and ensures [strong eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency#Strong_eventual_consistency).
+It provides causal order and de-duplication of operations, and ensures [strong eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency#Strong_eventual_consistency).
 
 The project will provide these two abilities as part of this grant:
 
@@ -56,32 +56,34 @@ These two abilities make it possible to create compelling, edge-computed apps.
 
 <!-- - What are the benefits to getting this right? -->
 
-The architecture described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas for replication.
-This design centers around edge computers processing and updating data, with more general machines pinning and keeping the data available.
+The architecture described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas.
+This design centers around edge computers processing and updating data, with more general machines pinning and keeping that data available.
 Applications this architecture is best-suited fall into the media or communication, like most of Google's app suite.
 
-Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS. The user has control over their data with the choice to self-host. The local replica is the source of truth, sometimes called local-first.
+Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS.
+The user has control over their data with the choice to self-host.
+The local replica is the 'source of truth', referred to as local-first.
 
 Using Opal, developers will be able to define the state reducer for a database.
 A state reducer is a function that takes a state with an operation and returns a new state.
 Collaborative UI components can use Opal to derive their state.
-This collaboration can be between users or a user's devices.
+This collaboration can be between users and a user's devices.
 
 A big issue with peer-to-peer databases like OrbitDB is that if no other devices are online, you can't replicate anything!
 Persistent replication is needed, and there are two ways to do it.
 
-The first is continuing the pinning service idea, where you have Opal instances to keep online with a list of databases to replicate.
+The first is continuing the pinning service idea, where you have Opal instances to keep online with a pin-list of databases to replicate.
 These servers run replication algorithms that work over pubsub and IPFS.
 If those pinners are online, then the data is available and can be replicated.
-This solution is not terrible as it has some benefits, but it is better called 'persisted replication' since pubsub messages are not persistent.
+This solution is not terrible as it has some benefits, but it's better described as 'persisted replication' since pubsub messages are not persistent.
 
 The second solution for persistent replication has to do with swapping pubsub for IPNS.
 Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in-place, with the IPNS records and IPFS data being pinned.
 Another advantage here is that IPFS and IPNS are more general layers and don't require building up infrastructure and support.
 
-<img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777" />
+<img src="./.assets/architecture-diagram2.png" alt="architecture diagram" width="777"/>
 
-*With the ability to backup and update Merkle-CRDT replicas, peers can read and merge the replicas of peers that have gone offline.*
+*Keeping Merkle-CRDT replicas available allows applications to retain functionality when peers are not online.*
 
 --- 
 
@@ -190,11 +192,11 @@ Nearer future (~2.0):
  - graphsync replicator: using graphsync to improve replicator performance.
 
 Further future (~3.0):
- - dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do deterministically. related: [A Dynamic Topological Sort Algorithm for
-Directed Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf) and will need to revisit.
+ - dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do deterministically and will need to revisit. [A Dynamic Topological Sort Algorithm for
+Directed Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf).
  - finality gadgets: this would look at the best ways to migrate databases without too many side effects.
  - CBOR CRDT: a CBOR state where each field in the CBOR object is fully mergeable.
- - cross-log causality: use randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
+ - cross-log causality: use chained randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
 
 # Team
 
@@ -228,10 +230,10 @@ Daniel, has been involved with OrbitDB since finding it in late 2018, shortly af
 <!-- Please provide links to your team's prior code repos for similar or related projects. -->
 
 Daniel:
-  - [zzzync](https://github.com/tabcat/zzzync/tree/hackfs22): 2 day hack/concept using web3storage, first prize at hackfs2022 [[ref1]](https://ethglobal.com/showcase/zzzync-xk96u)
+  - [zzzync](https://github.com/tabcat/zzzync/tree/hackfs22): 2 day hack/concept using web3.storage, first prize at hackfs2022 [[ref1]](https://ethglobal.com/showcase/zzzync-xk96u)
   - [sailplane](https://github.com/cypsela/sailplane-web): collaborative filesystem web app built with orbitdb and ipfs, finalist at hackfs2020 [[ref1]](https://showcase.ethglobal.com/hackfs/sailplane-web) [[ref2]](https://filecoin.io/blog/posts/meet-the-hackfs-teams-vol.3/)
   - [orbit-db-fsstore](https://github.com/tabcat/orbit-db-fsstore): a custom orbitdb database representing a filesystem
-  - [orbitdb](https://github.com/orbitdb): community maintainer and formerly full-time maintainer
+  - [orbitdb](https://github.com/orbitdb): community maintainer and former full-time maintainer
 
 # Additional Information
 
