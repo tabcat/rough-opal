@@ -114,6 +114,8 @@ The features to be delivered for each are in the following issues:
 
 [`Zzzync` Development Plans](https://github.com/tabcat/zzzync/issues/2)
 
+[`Opal-Spec` 1.0-beta](https://github.com/cypsela/opal-spec/issues/1)
+
 There will also be a monthly status issue in the Opal repo. The monthly issues will track what is being worked on and completed. Here is [September's Status](https://github.com/cypsela/opal/issues/1).
 
 Deliverables will also be tracked in [tabcat/rough-opal](https://github.com/tabcat/rough-opal)'s README; a repo made for this grant.
