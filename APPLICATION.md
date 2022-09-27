@@ -56,9 +56,9 @@ These two abilities make it possible to create compelling, edge-computed apps.
 
 <!-- - What are the benefits to getting this right? -->
 
-The architecture described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas.
+The pattern described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas.
 This design centers around edge computers processing and updating data, with more general machines pinning and keeping that data available.
-Applications this architecture is best-suited fall into the media or communication, like most of Google's app suite.
+Applications this pattern is best-suited fall into media or communication, like most of Google's app suite.
 
 Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS.
 The user has control over their data with the choice to self-host.
@@ -127,8 +127,8 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 
 **(SEPT 2022)** Opal Repo Init
 
-- set up linting/formatting
-- configure typescript
+- begin opal design and spec
+- configure project repo
 - write unit tests
 - prep for adding features
   - build interfaces for manifest modules
@@ -139,25 +139,25 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 
 **(OCT 2022)** Opal Replication and Perf
 
-- add basic replicator (Libp2p pubsub + IPFS)
+- begin design and spec of live replicator
+- add live replicator (Libp2p pubsub + IPFS)
 - test replication and replicated states
 - write benchmarks
 - automate release with generated api docs and changelog
-- working draft spec documents for opal and main modules
+- release draft spec for opal and main modules
 - release alpha with expected public api changes
 
 **(NOV 2022)** Zzzync Replicator
 
-- begin design of replicator
-- choose a design to start building
-- set up linting/formatting
-- configure typescript
-- write implementation of design
+- begin design and spec of zzzync persistent replicator
+- choose a design to build
+- configure project repo
+- write implementation (likely using web3.storage and w3name)
 - write unit tests
 - test interop with Opal
 - write benchmarks
 - automate release with generated api docs and changelog
-- draft spec document
+- release draft spec
 - release alpha with expected public api changes
 
 **(DEC 2022)** Release
@@ -171,12 +171,21 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
   - Write base FAQ.md document for common user questions
   - Basic Tutorial document added to repo or blogged
   - NodeJS and Create React App examples
-- Complete pre 1.0 Opal and Zzzync specifications
-- Release Opal and Zzzync beta with public api locked until 1.0
+- Release Opal and Zzzync 1.0-beta
+  - completed protocol specification
+  - typescript implementation (with public api locked until 1.0)
 
 ## Total Budget Requested
 
 <!--Sum up the total requested budget across all milestones, and include that figure here. Also, please include a budget breakdown to specify how you are planning to spend these funds. -->
+
+| Budget | Duration | Payable As |
+| --- | --- | --- |
+| $30000 | SEPT-DEC 2022 | FILECOIN |
+
+1 Full-time Engineer over 4 months at 45$/hr
+
+Payments preferred monthly in Filecoin
 
 ## Maintenance and Upgrade Plans
 
