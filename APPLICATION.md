@@ -24,13 +24,13 @@
 - IPFS, IPNS, and Libp2p - update advertisement and replication
 - IPFS and Filecoin - backup and reliable hosting of replicas
 
-The project is written in typescript, and compiled into javascript. It will be robust, maintainable, and easy for developers to start using.
+The project is written in typescript and compiled into javascript. It will be robust, maintainable, and easy for developers to use.
 This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) they did not accept.
 Opal is not a fork of OrbitDB; it is a complete rewrite focused on efficiently representing arbitrary states. Opal will not be interoperable with OrbitDB.
 
 Merkle-CRDTs are still at the heart of the project.
 This data-structure is a combination of [Merkle-DAGs](https://docs.ipfs.tech/concepts/merkle-dag/) and [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type).
-It provides causal order and de-duplication of operations, and ensures [strong eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency#Strong_eventual_consistency).
+It provides causal order and de-duplication of operations, and it ensures [strong eventual consistency](https://en.wikipedia.org/wiki/Eventual_consistency#Strong_eventual_consistency).
 
 The project will provide these two abilities as part of this grant:
 
@@ -57,15 +57,15 @@ These two abilities make it possible to create compelling, edge-computed apps.
 <!-- - What are the benefits to getting this right? -->
 
 The pattern described previously combines Merkle-CRDTs with reliable hosting of the CRDT replicas.
-This design centers around edge computers processing and updating data, with more general machines pinning and keeping that data available.
+It centers around edge computers processing and updating data. More general machines keep the data available.
 Applications this pattern is best-suited fall into media or communication, like most of Google's app suite.
 
 Building software this way has unique characteristics and goes hand in hand with delay-tolerant network designs like IPFS.
 The user has control over their data with the choice to self-host.
-The local replica is the 'source of truth', referred to as local-first.
+The local replica is the source of truth, referred to as local-first.
 
-Using Opal, developers will be able to define the state reducer for a database.
-A state reducer is a function that takes a state with an operation and returns a new state.
+With Opal, developers can define the state reducer for a database.
+A state reducer processes the log into a readable state.
 Collaborative UI components can use Opal to derive their state.
 This collaboration can be between users and a user's devices.
 
@@ -78,8 +78,8 @@ If those pinners are online, then the data is available and can be replicated.
 This solution is not terrible as it has some benefits, but it's better described as 'persisted replication' since pubsub messages are not persistent.
 
 The second solution for persistent replication has to do with swapping pubsub for IPNS.
-Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in-place, with the IPNS records and IPFS data being pinned.
-Another advantage here is that IPFS and IPNS are more general layers and don't require building up infrastructure and support.
+Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in place. Then the IPNS records and IPFS data are pinned.
+Another advantage is that IPFS and IPNS are more general layers and don't require building specialized infrastructure and support.
 
 <img src="./.assets/architecture-diagram.png" alt="architecture diagram" width="777"/>
 
@@ -91,10 +91,10 @@ Because the work done for OrbitDB under a previous grant was not accepted, doing
 Opal is much more modular when compared, especially with replication.
 
 Opal also includes incremental traversal of the Merkle-DAG in either direction.
-This type of traversal is not part of OrbitDB, and is probably the most significant change from that previous grant work.
+This type of traversal is not part of OrbitDB and is the most significant change from that previous grant work.
 Incremental traversal allows for database entries to be kept out of memory and streamed when needed by traversing a graph of CIDs.
 
-The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new, will involve CAR files and updating IPNS records.
+The most challenging part of this grant will be building persistent replication. It involves uploading the replica to pinning services as it's updated. It's new and will use CAR files and involve updating IPNS records.
 
 <!-- - What are the risks if you don't get it right? -->
 
@@ -108,7 +108,7 @@ The most challenging part of this grant will be building persistent replication.
 
 [`Opal`](https://github.com/cypsela/opal) and [`Zzzync`](https://github.com/tabcat/zzzync) are the deliverables. `Opal` is the Merkle-CRDT collaborative states piece, and `Zzzync` will be a replicator module for persistent replication.
 
-The exact features that will be delivered of each are defined in the following issues:
+The features to be delivered for each are in the following issues:
 
 [`Opal` Base Feature Set](https://github.com/cypsela/opal/issues/8)
 
@@ -143,22 +143,22 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 - add live replicator (Libp2p pubsub + IPFS)
 - test replication and replicated states
 - write benchmarks
-- automate release with generated api docs and changelog
-- release draft spec for opal and main modules
-- release alpha with expected public api changes
+- automate release with generated API docs and changelog
+- release draft spec for Opal and main modules
+- release alpha with expected public API changes
 
 **(NOV 2022)** Zzzync Replicator
 
-- begin design and spec of zzzync persistent replicator
+- begin design and spec of persistent replicator
 - choose a design to build
 - configure project repo
 - write implementation (likely using web3.storage and w3name)
 - write unit tests
 - test interop with Opal
 - write benchmarks
-- automate release with generated api docs and changelog
+- automate release with generated API docs and changelog
 - release draft spec
-- release alpha with expected public api changes
+- release alpha with expected public API changes
 
 **(DEC 2022)** Release
 
@@ -167,13 +167,13 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
   - stress-test and benchmark replicators
   - check for replication bugs and perf improvements
 - Usage References
-  - Opal and Zzzync automated (and nice-looking) api docs
+  - Opal and Zzzync automated (and nice-looking) API docs
   - Write base FAQ.md document for common user questions
   - Basic Tutorial document added to repo or blogged
   - NodeJS and Create React App examples
 - Release Opal and Zzzync 1.0-beta
   - completed protocol specification
-  - typescript implementation (with public api locked until 1.0)
+  - typescript implementation (with public API locked until 1.0)
 
 ## Total Budget Requested
 
@@ -193,7 +193,7 @@ Payments preferred monthly in Filecoin
 
 This grant will build a foundation that will define the base features and keep the project hyper-maintainable over the years.
 After the project reaches this level of maintainability, the key is cultivating a user base.
-Acquiring users will require exposure while providing documentation, a helpful community chat, and a valueable tool with great developer experience.
+Acquiring users will require exposure while providing documentation, a helpful community chat, and a valuable tool with great developer experience.
 
 Following release there will still be room for improvement:
 
@@ -207,8 +207,8 @@ Nearer future (~2.0):
 
 Further future (~3.0):
 
-- dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do deterministically and will need to revisit. [A Dynamic Topological Sort Algorithm for
-irected Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf).
+- dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do it deterministically and will need to revisit. [A Dynamic Topological Sort Algorithm for
+Directed Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf).
 - finality gadgets: this would look at the best ways to migrate databases without too many side effects.
 - CBOR CRDT: a CBOR state where each field in the CBOR object is fully mergeable.
 - cross-log causality: use chained randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
@@ -228,17 +228,17 @@ Daniel, [@tabcat](https://github.com/tabcat)
 
 <!-- Please describe (in words) your team's relevant experience, and why you think you are the right team to build this project. You can cite your team's prior experience in similar domains, doing similar dev work, individual team members' backgrounds, etc. -->
 
-Daniel, has been involved with OrbitDB since finding it in late 2018, shortly after diving into IPFS.
+Daniel was involved with OrbitDB since finding it in late 2018, shortly after diving into IPFS.
 
 > In March 2020, I started working on a collaborative filesystem on top of IPFS using OrbitDB. In July 2020, a partner and I leveraged this to build [`sailplane`](https://cypsela.github.io/sailplane-web/), a p2p Dropbox-like web app that made us finalists in the first HackFS.
 >
 > In February 2021, I was contracted by `equilibrium.co` to maintain OrbitDB.
 >
-> In November, we signed an open source grant from Protocol Labs to fund the first part of development for OrbitDB 1.0. During the 6 month grant period, I worked on keeping the current version supporting the latest `js` and `go` IPFS versions, and a protocol spec and implementation for 1.0.
+> In November, we signed an open source grant from Protocol Labs to fund the first part of development for OrbitDB 1.0. During those six months, I worked on keeping the current version supporting the latest `js` and `go` IPFS versions, and a protocol spec and implementation for 1.0.
 >
 > That work ended up not being accepted by the owners of OrbitDB, so I'm continuing it with Opal.
 >
-> In July 2022, I began thinking more about persistent replication methods for OrbitDB involving IPFS and IPNS pinning. While on a trip during HackFS 2022, I learned about web3.storage and w3name. After the trip I hacked them together for a short demo project and won the IPFS/Filecoin first prize.
+> In July 2022, I began thinking more about persistent replication methods for OrbitDB involving IPFS and IPNS pinning. While on a trip during HackFS 2022, I learned about web3.storage and w3name. After the trip, I hacked them together for a short demo project and won the IPFS/Filecoin first prize.
 
 ## Team code repositories
 
@@ -265,4 +265,6 @@ Please provide the best email address for discussing the grant agreement and gen
 
 ---
 
-`Opal` is a temporary name/code-name, until I find something better. Always open to hearing naming ideas! 😁
+For now, `Opal` is a temporary/code name until I find something better.
+
+Always open to hearing naming ideas! 😁
