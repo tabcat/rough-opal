@@ -19,10 +19,10 @@
 
 `Opal` is a peer-to-peer, local-first database. Its focus will be on providing web applications with dynamic and collaborative states. The core technologies used are:
 
- - IPLD - data reference
- - [Merkle-CRDTs](https://research.protocol.ai/publications/merkle-crdts-merkle-dags-meet-crdts/) - the replica data structure
- - IPFS, IPNS, and Libp2p - update advertisement and replication
- - IPFS and Filecoin - backup and reliable hosting of replicas
+- IPLD - data reference
+- [Merkle-CRDTs](https://research.protocol.ai/publications/merkle-crdts-merkle-dags-meet-crdts/) - the replica data structure
+- IPFS, IPNS, and Libp2p - update advertisement and replication
+- IPFS and Filecoin - backup and reliable hosting of replicas
 
 The project is written in typescript, and compiled into javascript. It will be robust, maintainable, and easy for developers to start using.
 This project continues work done under a grant for [OrbitDB](https://github.com/orbitdb/orbit-db) they did not accept.
@@ -85,7 +85,7 @@ Another advantage here is that IPFS and IPNS are more general layers and don't r
 
 *Keeping Merkle-CRDT replicas available allows applications to retain functionality when peers are not online.*
 
---- 
+---
 
 Because the work done for OrbitDB under a previous grant was not accepted, doing this with OrbitDB would be very difficult due to some tight coupling.
 Opal is much more modular when compared, especially with replication.
@@ -126,49 +126,53 @@ There will also be a monthly status issue in the Opal repo. The monthly issues w
 <!-- - How much time this milestone will take to achieve (using real dates) -->
 
 **(SEPT 2022)** Opal Repo Init
-  - set up linting/formatting
-  - configure typescript
-  - write unit tests
-  - prep for adding features
-    - build interfaces for manifest modules
-    - rewrite manifest module registry
-    - rework store module
-    - rework classes to use Libp2p's startable interface
-  - make databases locally persistent
+
+- set up linting/formatting
+- configure typescript
+- write unit tests
+- prep for adding features
+  - build interfaces for manifest modules
+  - rewrite manifest module registry
+  - rework store module
+  - rework classes to use Libp2p's startable interface
+- make databases locally persistent
 
 **(OCT 2022)** Opal Replication and Perf
-  - add basic replicator (Libp2p pubsub + IPFS)
-  - test replication and replicated states
-  - write benchmarks
-  - automate release with generated api docs and changelog
-  - working draft spec documents for opal and main modules
-  - release alpha with expected public api changes
+
+- add basic replicator (Libp2p pubsub + IPFS)
+- test replication and replicated states
+- write benchmarks
+- automate release with generated api docs and changelog
+- working draft spec documents for opal and main modules
+- release alpha with expected public api changes
 
 **(NOV 2022)** Zzzync Replicator
-  - begin design of replicator
-  - choose a design to start building
-  - set up linting/formatting
-  - configure typescript
-  - write implementation of design
-  - write unit tests
-  - test interop with Opal
-  - write benchmarks
-  - automate release with generated api docs and changelog
-  - draft spec document
-  - release alpha with expected public api changes
 
-**(DEC 2022)**
-  - Heavy Testing
-    - network simulated testing with testground
-    - stress-test and benchmark replicators
-    - check for replication bugs and perf improvements
-  - Usage References
-    - Opal and Zzzync automated (and nice-looking) api docs
-    - Write base FAQ.md document for common user questions
-    - Basic Tutorial document added to repo or blogged
-    - NodeJS and Create React App examples
-  - Complete pre 1.0 Opal and Zzzync specifications
-  - Release Opal and Zzzync beta with public api locked until 1.0
+- begin design of replicator
+- choose a design to start building
+- set up linting/formatting
+- configure typescript
+- write implementation of design
+- write unit tests
+- test interop with Opal
+- write benchmarks
+- automate release with generated api docs and changelog
+- draft spec document
+- release alpha with expected public api changes
+
+**(DEC 2022)** Release
+
+- Heavy Testing
+  - network simulated testing with testground
+  - stress-test and benchmark replicators
+  - check for replication bugs and perf improvements
+- Usage References
+  - Opal and Zzzync automated (and nice-looking) api docs
+  - Write base FAQ.md document for common user questions
+  - Basic Tutorial document added to repo or blogged
+  - NodeJS and Create React App examples
+- Complete pre 1.0 Opal and Zzzync specifications
+- Release Opal and Zzzync beta with public api locked until 1.0
 
 ## Total Budget Requested
 
@@ -185,18 +189,20 @@ Acquiring users will require exposure while providing documentation, a helpful c
 Following release there will still be room for improvement:
 
 Nearer future (~2.0):
- - active replication: implementing the replication algorithm described in [Byzantine Eventual Consistency](https://arxiv.org/pdf/2012.00472.pdf); involves pushing data missed by a peer's bloom filter. useful for applications that want less latency, like messaging.
- - encrypted Merkle-CRDT: using a group encryption algorithm like [Key Agreement for Decentralized Secure Group Messaging](https://martin.kleppmann.com/2021/11/17/decentralized-key-agreement.html), which should fit quite nicely.
- - dynamic access control: update access control lists without affecting operation history
- - efficient predecessor referencing: allow quicker traversal and replication of the Merkle-DAG by picking references smartly, thanks to [science](https://kodu.ut.ee/~lipmaa/papers/thesis/thesis.pdf).
- - graphsync replicator: using graphsync to improve replicator performance.
+
+- active replication: implementing the replication algorithm described in [Byzantine Eventual Consistency](https://arxiv.org/pdf/2012.00472.pdf); involves pushing data missed by a peer's bloom filter. useful for applications that want less latency, like messaging.
+- encrypted Merkle-CRDT: using a group encryption algorithm like [Key Agreement for Decentralized Secure Group Messaging](https://martin.kleppmann.com/2021/11/17/decentralized-key-agreement.html), which should fit quite nicely.
+- dynamic access control: update access control lists without affecting operation history
+- efficient predecessor referencing: allow quicker traversal and replication of the Merkle-DAG by picking references smartly, thanks to [science](https://kodu.ut.ee/~lipmaa/papers/thesis/thesis.pdf).
+- graphsync replicator: using graphsync to improve replicator performance.
 
 Further future (~3.0):
- - dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do deterministically and will need to revisit. [A Dynamic Topological Sort Algorithm for
-Directed Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf).
- - finality gadgets: this would look at the best ways to migrate databases without too many side effects.
- - CBOR CRDT: a CBOR state where each field in the CBOR object is fully mergeable.
- - cross-log causality: use chained randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
+
+- dynamic topological sort: maintaining a topological sort of the DAG as entries get merged. not sure if it is possible to do deterministically and will need to revisit. [A Dynamic Topological Sort Algorithm for
+irected Acyclic Graphs](https://www.doc.ic.ac.uk/~phjk/Publications/DynamicTopoSortAlg-JEA-07.pdf).
+- finality gadgets: this would look at the best ways to migrate databases without too many side effects.
+- CBOR CRDT: a CBOR state where each field in the CBOR object is fully mergeable.
+- cross-log causality: use chained randomness beacons like `drand` to provide a universal causality. seems useful for some applications?
 
 # Team
 
@@ -230,10 +236,11 @@ Daniel, has been involved with OrbitDB since finding it in late 2018, shortly af
 <!-- Please provide links to your team's prior code repos for similar or related projects. -->
 
 Daniel:
-  - [zzzync](https://github.com/tabcat/zzzync/tree/hackfs22): 2 day hack/concept using web3.storage, first prize at hackfs2022 [[ref1]](https://ethglobal.com/showcase/zzzync-xk96u)
-  - [sailplane](https://github.com/cypsela/sailplane-web): collaborative filesystem web app built with orbitdb and ipfs, finalist at hackfs2020 [[ref1]](https://showcase.ethglobal.com/hackfs/sailplane-web) [[ref2]](https://filecoin.io/blog/posts/meet-the-hackfs-teams-vol.3/)
-  - [orbit-db-fsstore](https://github.com/tabcat/orbit-db-fsstore): a custom orbitdb database representing a filesystem
-  - [orbitdb](https://github.com/orbitdb): community maintainer and former full-time maintainer
+
+- [zzzync](https://github.com/tabcat/zzzync/tree/hackfs22): 2 day hack/concept using web3.storage, first prize at hackfs2022 [[ref1]](https://ethglobal.com/showcase/zzzync-xk96u)
+- [sailplane](https://github.com/cypsela/sailplane-web): collaborative filesystem web app built with orbitdb and ipfs, finalist at hackfs2020 [[ref1]](https://showcase.ethglobal.com/hackfs/sailplane-web) [[ref2]](https://filecoin.io/blog/posts/meet-the-hackfs-teams-vol.3/)
+- [orbit-db-fsstore](https://github.com/tabcat/orbit-db-fsstore): a custom orbitdb database representing a filesystem
+- [orbitdb](https://github.com/orbitdb): community maintainer and former full-time maintainer
 
 # Additional Information
 
