@@ -10,7 +10,7 @@
 
 </br>
 
-### Proposal
+## Proposal
 
 |  |  |
 | --- | ---: |
@@ -20,10 +20,10 @@
 | DURATION: | SEPT-DEC 2022 |
 | PROGRAM: | FILECOIN OPEN GRANTS |
 
-### Deliverables:
+## Deliverables
 
 | Repo | Tracker |
 | --- | ---: |
 | [cypsela/opal](https://github.com/cypsela/opal) | https://github.com/cypsela/opal/issues/8 |
-| [tabcat/zzzync](https://github.com/tabcat/zzzync/issues/2) | https://github.com/tabcat/zzzync/issues/2 |
+| [tabcat/zzzync](https://github.com/tabcat/zzzync) | https://github.com/tabcat/zzzync/issues/2 |
 | [cypsela/opal-spec](https://github.com/cypsela/opal-spec) | https://github.com/cypsela/opal-spec/issues/1 |
