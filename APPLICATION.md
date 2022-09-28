@@ -81,7 +81,7 @@ The second solution for persistent replication has to do with swapping pubsub fo
 Instead of a node advertising the latest known heads over pubsub, IPNS becomes used in place. Then the IPNS records and IPFS data are pinned.
 Another advantage is that IPFS and IPNS are more general layers and don't require building specialized infrastructure and support.
 
-<img src="./.assets/architecture-diagram.png" alt="architecture diagram" width="777"/>
+<img src="https://raw.githubusercontent.com/tabcat/rough-opal/master/.assets/architecture-diagram.png" alt="architecture diagram" width="777"/>
 
 *Keeping Merkle-CRDT replicas available allows applications to retain functionality when peers are not online.*
 
