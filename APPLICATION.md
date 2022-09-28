@@ -269,6 +269,6 @@ Please provide the best email address for discussing the grant agreement and gen
 
 ---
 
-For now, `Opal` is a temporary/code name until I find something better.
+For now, `Opal` is a temporary/code name until I find something better. (which may be never)
 
 Always open to hearing naming ideas! 😁
