@@ -15,7 +15,7 @@
 |  |  |
 | --- | ---: |
 | APPLICATION: | [APPLICATION.md](./APPLICATION.md) |
-| STATUS:  | SUBMITTED |
+| STATUS:  | ACCEPTED |
 | SUBMITTED: | SEPT 28 2022 |
 | ISSUE: | https://github.com/filecoin-project/devgrants/issues/1031 |
 | DURATION: | SEPT-DEC 2022 |
