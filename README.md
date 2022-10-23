@@ -18,7 +18,7 @@
 | STATUS:  | ACCEPTED |
 | SUBMITTED: | SEPT 28 2022 |
 | ISSUE: | https://github.com/filecoin-project/devgrants/issues/1031 |
-| DURATION: | SEPT-DEC 2022 |
+| DURATION: | SEPT 2022 - DEC 2022 |
 | PROGRAM: | FILECOIN OPEN GRANTS |
 
 ## Deliverables
