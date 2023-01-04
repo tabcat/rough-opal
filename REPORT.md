@@ -56,10 +56,10 @@ Some planned work has also been canceled for reasons that will be explained furt
     - ~~check for bugs and perf improvements~~
     - ~~release beta with public api locked~~
   - [`Opal-Spec` 1.0-beta]()
-    - Release Draft Spec for Opal and main modules
-    - Release Draft Spec for Live Replicator
-    - ~~Release Draft Spec for Zzzync~~
-    - Release completed Specifications for Opal ~~and Zzzync~~ 1.0-betas
+    - [Release Draft Spec for Opal and main modules](#release-draft-spec-for-opal-and-main-modules)
+    - [Release Draft Spec for Live Replicator](#release-draft-spec-for-live-replicator)
+    - [~~Release Draft Spec for Zzzync~~](#release-draft-spec-for-zzzync)
+    - [Release completed Specifications for Opal ~~and Zzzync~~ 1.0-betas](#release-completed-specifications-for-opal-and-zzzync-10-betas)
 - [Development Roadmap](#development-roadmap)
   - [Opal Repo Init](#opal-repo-init)
     - begin opal design and spec
@@ -73,41 +73,41 @@ Some planned work has also been canceled for reasons that will be explained furt
     - [make databases locally persistent](#make-databases-locally-persistent)
   - [Opal Replication and Perf](#opal-replication-and-perf)
     - begin design and spec of live replicator
-    - add live replicator (Libp2p pubsub + IPFS)
-    - test replication and replicated states
-    - write benchmarks
+    - [add live replicator (Libp2p pubsub + IPFS)](#add-live-replicator-libp2p-pubsub--ipfs)
+    - [test replication and replicated states](#test-replication-and-replicated-states)
+    - [write benchmarks](#write-benchmarks)
     - [automate release with generated API docs and changelog](#automate-release-with-generated-API-docs-and-changelog)
-    - release draft spec for Opal and main modules
-    - release alpha with expected public API changes
-  - ~~Zzzync Replicator~~
-    - begin design and spec of persistent replicator
-    - choose a design to build
-    - configure project repo
-    - write implementation (likely using web3.storage and w3name)
-    - write unit tests
-    - test interop with Opal
-    - write benchmarks
-    - automate release with generated API docs and changelog
-    - release draft spec
-    - release alpha with expected public API changes
-  - Release
+    - [release draft spec for Opal and main modules](#release-draft-spec-for-opal-and-main-modules-1)
+    - [~~release alpha with expected public API changes~~](#release-alpha-with-expected-public-api-changes)
+  - [~~Zzzync Replicator~~](#zzzync-replicator)
+    - ~~begin design and spec of persistent replicator~~
+    - ~~choose a design to build~~
+    - ~~configure project repo~~
+    - ~~write implementation (likely using web3.storage and w3name)~~
+    - ~~write unit tests~~
+    - ~~test interop with Opal~~
+    - ~~write benchmarks~~
+    - ~~automate release with generated API docs and changelog~~
+    - ~~release draft spec~~
+    - ~~release alpha with expected public API changes~~
+  - [Release](#release)
     - ~~Heavy Testing~~
       - ~~network simulated testing with testground~~
       - ~~stress-test and benchmark replicators~~
       - ~~check for replication bugs and perf improvements~~
-    - Usage References
-      - Opal and ~~Zzzync automated~~ (and nice-looking) API docs
-      - Write base FAQ.md document for common user questions
-      - Basic Tutorial document added to repo or blogged
-      - NodeJS ~~and Create React App~~ examples
+    - [Usage References](#usage-references)
+      - [Opal and ~~Zzzync automated~~ (and nice-looking) API docs](#opal-and-zzzync-automated-and-nice-looking-api-docs)
+      - [Write base FAQ.md document for common user questions](#write-base-faqmd-document-for-common-user-questions)
+      - [Basic Tutorial document added to repo or blogged](#basic-tutorial-document-added-to-repo-or-blogged)
+      - [NodeJS ~~and Create React App~~ examples](#nodejs-and-create-react-app-examples)
     - [Release Opal and Zzzync 1.0-beta](#release-opal)
-      - completed protocol specification
+      - [completed protocol specification](#completed-protocol-specification)
       - [typescript implementation (with public API locked until 1.0)](typescript-implementation)
 - [Closing](#closing)
-  - Accomplishments
-  - Unplanned Work
-  - Next Steps
-  - Remarks
+  - [Accomplishments](#accomplishments)
+  - [Still Ongoing](#still-ongoing)
+  - [Next Steps](#next-steps)
+  - [Remarks](#remarks)
 
 <br/>
 
@@ -122,7 +122,10 @@ Some planned work has also been canceled for reasons that will be explained furt
 Issue: https://github.com/cypsela/opal/issues/8
 
 #### Locally persisted Database replicas
-
+  - [Accomplishments
+  - [Unplanned Work
+  - [Next Steps
+  - [Remarks
 Not just the database replicas are persisted but also the store indexes. This is so databases can be read (index), and updated (replica) immediately upon being opened.
 
 - https://github.com/opalsnt/welo/issues/12
@@ -136,9 +139,7 @@ While this is crossed out it is still possible to create custom databases easily
 It can still be made much, much easier so leaving this as unfinished.
 
 Here is the [key-value store model](https://github.com/opalsnt/welo/blob/master/src/store/keyvalue/model.ts) which shows what will need to be supplied once a better way for supplying one is provided.
-It includes a reducer, an init function (which supplies the initial value for the state), action creators, and selectors which are all similar to how [Redux](https://redux.js.org/) is used (or was used).
-
-This ended up left out because there were bigger fish to fry but a good solution will be found.
+It includes a reducer, an init function (which supplies the initial value for the state), action creators, and selectors which are all similar to [Redux](https://redux.js.org/)'s design.
 
 #### Pubsub Heads Exchange Replicator
 
@@ -159,7 +160,7 @@ This will take more time than expected to do right. In this case *to do right* m
 This was identified as the most difficult part in the grant proposal.
 
 It's still possible to have a naive Zzzync replicator for experimental usage fairly quickly.
-However, I didn't see this as worth it and am looking at designing system for use longterm.
+However, I didn't see this as worth it and am looking at designing a system for use longterm.
 
 During the grant I did [chat about this with Irakli](https://github.com/web3-storage/w3protocol/issues/154#issuecomment-1311854803) from web3storage who always has some good information.
 
@@ -403,7 +404,7 @@ but look forward to adding a low latency replication protocol after Zzzync.
 
 Will explore these path options more in a follow up grant proposal.
 
-### Reflection and Remarks
+### Remarks
 
 This was my first solo grant project.
 The admins managing the grant procedure and communication were great.
