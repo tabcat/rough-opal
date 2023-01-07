@@ -395,7 +395,7 @@ After completing what is included in the section above,
 I plan to look at designing an IO-efficient replica structure in IPLD.
 Intuitively this also seems relevant to Zzzync replicators.
 
-Performance, hardening and testing the implementation will be the main focuses afterward, in that order.
+Testing, performance, hardening the implementation will be the main focuses afterward, in that order.
 I'd also like to learn Typescript a bit better.
 I know general use right now but more advanced knowledge will enable me to right even cleaner code that requires less testing.
 
