@@ -1,34 +1,33 @@
 # Rough Opal Grant Report
 
-*This document will give a comprehensive view into the state of the grant work its duration comes to a close.*
+*This document will give a comprehensive view of the state of the grant work as its duration comes to a close.*
 
 ---
 
 ## Background
 
-[Rough-Opal](https://github.com/tabcat/rough-opal) is a grant that was accepted in October 2022. The duration of the grant spanned from September to December 2022.
+[Rough-Opal](https://github.com/tabcat/rough-opal) is a grant accepted in October 2022. The duration spanned from September to December 2022.
 
 ### Deliverables and Development Roadmap
 
-The original post including the grant deliverables exists in this [issue](https://github.com/filecoin-project/devgrants/issues/1031).
-That post has been editted once, the same day it was posted, and has not been editted since.
+The [original proposal](https://github.com/filecoin-project/devgrants/issues/1031) containing grant deliverables has not since been edited.
 
 Below the Deliverables and Development Roadmap from that post have been turned into a Table of Contents.
-This document ends with a [Closing](#closing) section which is included in the ToC.
+This document ends with a [Closing](#closing) included in the ToC.
 
-The links for each item snap to a sections which references prs/issues/commits that relate to them, with a written section if necessary.
-Items which do not have a link have been included in the parent or child or are not significant.
-Items which have been crossed out have not be completed and will include a written section for explanation.
-All other items have been completed or will be completed (see [Still Ongoing](#still-ongoing) for incomplete but still planned items).
+The links for each item snap to a section that references prs/issues/commits related to them.
+Items that are not linked have been included in the parent or child or are insignificant.
+Crossed-out items will not be completed as part of this grant and include a written section for explanation.
+All other ToC items have been or will be completed (see [Still Ongoing](#still-ongoing) for incomplete but still planned items).
 
 ### Changes Since Then
 
 At the start of the grant, the protocol and implementation shared the name `opal`.
 The grant proposal and the implementation's repo mentioned possible name changes.
 Names have been changed for the protocol and implementation to `opalsnt` and `welo`, respectively.
-The project also now has it's own Github org located at https://[github.com/opalsnt](github.com/opalsnt).
+The project now has its own Github org located at https://[github.com/opalsnt](github.com/opalsnt).
 
-Some planned work has also been canceled for reasons that will be explained further below. The two largest changes have to do with the `Zzzync replicator` and `Heavy Testing` which involved using Testground and other tools.
+Two significant changes involve removing `Zzzync replicator` and `Heavy Testing` from this grant's roadmap.
 
 ## Table of Contents
 
@@ -122,11 +121,8 @@ Some planned work has also been canceled for reasons that will be explained furt
 Issue: https://github.com/cypsela/opal/issues/8
 
 #### Locally persisted Database replicas
-  - [Accomplishments
-  - [Unplanned Work
-  - [Next Steps
-  - [Remarks
-Not just the database replicas are persisted but also the store indexes. This is so databases can be read (index), and updated (replica) immediately upon being opened.
+
+This required persisting the replicas and indexes of each database. Enables database reads (store index), and writes (replica) immediately upon being opened.
 
 - https://github.com/opalsnt/welo/issues/12
 - https://github.com/opalsnt/welo/commit/a9958dae8d105ca39f666487ee99bcb7cfee621f
@@ -135,51 +131,49 @@ Not just the database replicas are persisted but also the store indexes. This is
 
 #### ~~Easy Custom Database States~~
 
-While this is crossed out it is still possible to create custom databases easily.
-It can still be made much, much easier so leaving this as unfinished.
+Creating custom databases is easy now but can still be much easier, so leaving this unfinished.
+Necessary documentation will be added for this feature when it's ready.
 
-Here is the [key-value store model](https://github.com/opalsnt/welo/blob/master/src/store/keyvalue/model.ts) which shows what will need to be supplied once a better way for supplying one is provided.
-It includes a reducer, an init function (which supplies the initial value for the state), action creators, and selectors which are all similar to [Redux](https://redux.js.org/)'s design.
+Here is the [key-value store model](https://github.com/opalsnt/welo/blob/master/src/store/keyvalue/model.ts) showing what will be needed.
+It includes a reducer, an init function (which supplies the initial value for the state), action creators, and selectors.
+These are all similar to [Redux](https://redux.js.org/)'s design.
 
 #### Pubsub Heads Exchange Replicator
 
-This replicator works very closely to how the OrbitDB replicator works.
+This replicator is a reimplementation of the OrbitDB replicator.
 Welo nodes join a shared pubsub channel unique per database.
-When nodes see peers join the shared channel, nodes attempt to join a direct channel where updates for databases are advertised.
+When nodes see peers join the shared channel, nodes attempt to join a direct channel to advertise database updates.
 
-Unlike OrbitDB the replication has been specified and the replication tests are [not flaky](https://github.com/opalsnt/welo/commit/3f60808cde11f90f4789a298426e6fdcf9603f98).
+Unlike OrbitDB, the replicator has a specification, and replication tests are [not flaky](https://github.com/opalsnt/welo/commit/3f60808cde11f90f4789a298426e6fdcf9603f98).
 
 - https://github.com/opalsnt/welo/issues/17
 - https://github.com/opalsnt/welo/issues/20
 
 #### ~~Zzzync Replicator integration~~
 
-Unfortunately a Zzzync replicator was not added.
-This will take more time than expected to do right. In this case *to do right* means the result is: relatively efficient/fast and general purpose (can be useful apart from web3storage).
+Unfortunately, a Zzzync replicator was not added.
+Building one will take more time than expected to do right. In this case *to do right* means the result is: relatively efficient/fast and general purpose (can be used apart from web3storage).
 
-This was identified as the most difficult part in the grant proposal.
+The proposal identified this as the most difficult part of the grant.
 
-It's still possible to have a naive Zzzync replicator for experimental usage fairly quickly.
-However, I didn't see this as worth it and am looking at designing a system for use longterm.
+It's still possible to have a naive/experimental Zzzync replicator fairly quickly.
+However, I didn't see this as worth it and am looking at designing a system for use long-term.
 
-During the grant I did [chat about this with Irakli](https://github.com/web3-storage/w3protocol/issues/154#issuecomment-1311854803) from web3storage who always has some good information.
+I did [inquire about this with Irakli](https://github.com/web3-storage/w3protocol/issues/154#issuecomment-1311854803) from web3storage, who always has some good information.
 
 #### ~~IPLD Schema Validation  (if ready in javascript)~~
 
-Have not looked at this much since the grant began.
-Plan on hardening the implementation in the nearer future and this will likely be part of that.
+Validating the schema at the IPLD layer will likely be part of hardening the implementation in the nearer future.
 
 #### Automated Release: ci, change log, and api docs
 
 The release used is similar to js-libp2p's pipeline.
-You can see from the commit message I tried release please first (wasn't happy with how it bumped the version of the package).
-Release-please is pretty much exactly what I wanted.
-It creates a changlog inside a PR; when the PR is merged it makes a new Github release and publishes to npm.
-Changelog is generated and versions are bumped by looking at the Conventional Commits in the commit messages.
+It creates a changelog inside a PR; after it's merged, the workflow cuts a new Github release and publishes it to npm.
+A changelog is generated and the version is bumped by looking at the Conventional Commits in the commit messages.
 
-The [API docs](https://github.com/opalsnt/welo/blob/master/API/welo.md) generation has been automated.
-They look nice but can still be improved in the future.
-JSDoc is parsed by the tool to add useful information and the Typescript types are used to show parameters.
+The [API docs](https://github.com/opalsnt/welo/blob/master/API/welo.md) have been automated.
+They look nice but can be improved in the future.
+JSDoc is parsed by the tool to add useful information. The Typescript types are used to show parameters.
 
 - https://github.com/opalsnt/welo/commit/97a7f072ee51a8be1b446c2c6b70c822ae8c4b87
 - https://github.com/opalsnt/welo/issues/34
@@ -215,29 +209,28 @@ See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
 
 95% coverage according to [codecov.io](https://app.codecov.io/gh/opalsnt/welo)
 
-There are a few commits related to testing so I won't link them all.
-Feel free to check out the [tests](https://github.com/opalsnt/welo/tree/master/test). Plan on organizing them a bit more in the future.
+There are more than a few testing-related commits; so I won't link them all.
+Feel free to check out the [tests](https://github.com/opalsnt/welo/tree/master/test).
+I plan on organizing them a bit more in the future.
 
 #### prep for adding features
 
 - https://github.com/opalsnt/welo/issues/10
 - https://github.com/opalsnt/welo/issues/11
 
-This work mainly had to do with cleaning up code before adding new stuff.
+This work had to do with cleaning up code before adding new stuff.
 
 ##### build interfaces for manifest modules
 
 Created Typescript interfaces for the different manifest modules.
-Probably did this a bit earlier than necessary.
 
 ##### rewrite manifest module registry
 
-Fixed the module registry where modules referenced by the manifest are kept.
+Fixed the module registry where modules referenced by the manifest are registered.
 
 - https://github.com/opalsnt/welo/commit/fac797a8b36e51ee5eb4fd0a1f4fce5fd105339c
 
 ##### rework store module
-
 
 - https://github.com/opalsnt/welo/commit/567646d872a09695544160b4666e566149f6b72
 - https://github.com/opalsnt/welo/commit/e92a7410ec37c37c346c82ed0294b2c71db5241
@@ -245,7 +238,7 @@ Fixed the module registry where modules referenced by the manifest are kept.
 ##### rework classes to use Libp2p's startable interface
 
 Libp2p's startable interface is a Typescript interface for managing the lifecycle of objects.
-To make things a bit easier when working with async start/stop I made [Playable](https://github.com/opalsnt/welo/blob/master/src/utils/playable.ts) which classes inside the project use.
+To make things easier when working with async start/stop I made [Playable](https://github.com/opalsnt/welo/blob/master/src/utils/playable.ts) that classes inside the project use.
 
 - https://github.com/opalsnt/welo/commit/c9ec979387ae51c0ab14917f85212f0f98a585b
 - https://github.com/opalsnt/welo/commit/1e88f90b4dcd56d749cab9e9a49895b73e5a168
@@ -281,7 +274,7 @@ To make things a bit easier when working with async start/stop I made [Playable]
 #### write benchmarks
 
 This is not complete yet. It is part of [Still Ongoing](#still-ongoing).
-Benchmarks will be added for read/write/replication and metrics will be tracked overtime with [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark).
+Benchmarks will be added for read/write/replication, and metrics will be tracked over time with [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark).
 
 - https://github.com/opalsnt/welo/issues/37
 
@@ -298,7 +291,7 @@ See [Automated Release: ci, change log, and api docs](#automated-release-ci-chan
 
 #### ~~release alpha with expected public API changes~~
 
-The live replicator was not done on time so an alpha was never released.
+The live replicator was unfinished at the time; as a result, an alpha was never released.
 
 ### Zzzync Replicator
 
@@ -308,13 +301,13 @@ See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
 
 #### ~~Heavy Testing~~
 
-Will be looking at doing the heavier testing with tools like Testground around the same time as performance and hardening. I did not quite reach this step during the grant.
+I'll be looking at doing the heavier testing with tools like Testground around the same time as performance and hardening. I did not quite reach this step during the grant.
 
 #### Usage References
 
 ##### Opal ~~and Zzzync~~ automated (and nice-looking) API docs
 
-Decided to use [api-documenter](https://api-extractor.com/pages/setup/generating_docs/) instead of [Typedoc](https://typedoc.org) because it had much nicer looking generated markdown.
+Decided to use [api-documenter](https://api-extractor.com/pages/setup/generating_docs/) instead of [Typedoc](https://typedoc.org) because it had much nicer-looking generated markdown.
 
 - https://github.com/opalsnt/welo/issues/34
 - https://github.com/opalsnt/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
@@ -332,13 +325,13 @@ https://github.com/opalsnt/welo/issues/40
 ##### NodeJS ~~and Create React App~~ examples
 
 Welo has not been tested with browsers yet.
-This can be tracked in [browser tests issue](https://github.com/opalsnt/welo/issues/42).
+Support is tracked in [browser tests issue](https://github.com/opalsnt/welo/issues/42).
 
 - https://github.com/opalsnt/welo/issues/41
 
 #### Release Opal ~~and Zzzync~~ 1.0-beta
 
-The 1.0.0 release was created prematurely while trying out different release pipelines.
+The 1.0.0 release was prematurely cut while trying out different release pipelines.
 
 - https://github.com/opalsnt/welo/releases/tag/v1.0.0
 
@@ -350,12 +343,12 @@ Latest release is now [v1.0.2](https://github.com/opalsnt/welo/releases/tag/v1.0
 
 ##### typescript implementation (with public API locked until 1.0)
 
-The original plan was to turn the project into typescript toward the end of the grant.
-However Steve, my partner on [Cypsela](https://github.com/cypsela), recommended I use Typescript immediately.
+The original plan was to turn the project into Typescript toward the end of the grant.
+However, Steve, my partner on [Cypsela](https://github.com/cypsela), recommended I use Typescript immediately.
 
 *Thanks Steve*
 
-Had not tried Typescript much before. It helped a bunch and likely sped up development pretty considerably.
+It helped a bunch and likely sped up development pretty considerably.
 
 - https://github.com/opalsnt/welo/issues/3
 - https://github.com/opalsnt/welo/commit/d548bf51f31771a7c6f1837d54dd5fbcad21502d
@@ -364,20 +357,21 @@ Had not tried Typescript much before. It helped a bunch and likely sped up devel
 
 ### Accomplishments
 
-Welo, pronouced "way-low", is now a working peer-to-peer database written in Typescript.
+Welo, pronounced "way-low", is now a working peer-to-peer database written in Typescript.
 It's very similar to OrbitDB but does not need to load all entries into memory before opening a database
 (which can take multiple seconds; IIRC 2 seconds for every 1000 entries).
-Because Welo writes the replica and store index to disk, databases don't need to be loaded into memory;
-exposing read/write immediately regardless of database size.
+Because Welo write replicas and store indexes to disk, databases do not need to load all entries into memory;
+exposing read and write immediately regardless of database size.
+It will be easy, starting from here, to lazily load as much of the database into memory as the user sees fit.
 
-Publishing, testing, API docs, even checking and updating dependencies have been automated.
-Similar CI/CD actions to the js-libp2p repo are used to test and create releases on push to the master branch. 
+Publishing, testing, API docs, and checking/updating dependencies are now automated.
+Similar CI/CD actions to the js-libp2p repo test and create releases on push to the master branch. 
 
-Created [`copy-deps`](https://github.com/tabcat/copy-deps) which is a package that automates dependency updates when they are shared with another dependency.
-Now comes in handy when upgrading `ipfs-core`.
+I created [`copy-deps`](https://github.com/tabcat/copy-deps), a package that makes updating shared dependencies easier.
+This package comes in handy when upgrading `ipfs-core` as it overlaps a handful of dependencies `welo` uses.
 
-A complete spec is published for the Opalescent database.
-When any new replicator or extension to the spec is added it can be updated to include specs for them.
+A specification for the Opalescent database is published.
+This is a living specification for version `1.0-beta` and will continue to be updated as things are changed and added.
 
 ### Still Ongoing
 
@@ -395,14 +389,14 @@ After completing what is included in the section above,
 I plan to look at designing an IO-efficient replica structure in IPLD.
 Intuitively this also seems relevant to Zzzync replicators.
 
-Testing, performance, hardening the implementation will be the main focuses afterward, in that order.
+Testing, performance, and hardening the implementation will be the main focuses afterward, in that order.
 I'd also like to learn Typescript a bit better.
-I know general use right now but more advanced knowledge will enable me to right even cleaner code that requires less testing.
+I know general use right now but more advanced knowledge will enable me to write even cleaner code that requires less testing.
 
 The protocol is in a good state for now,
-but look forward to adding a low latency replication protocol after Zzzync.
+but look forward to adding a low-latency replication protocol after Zzzync.
 
-Will explore these path options more in a follow up grant proposal.
+Will explore these path options more in a follow-up grant proposal.
 
 ### Remarks
 
@@ -410,6 +404,7 @@ This was my first solo grant project.
 The admins managing the grant procedure and communication were great.
 It's always been a pleasure when interacting with anyone from the Protocol Labs umbrella.
 
-I can definitely improve in some areas. Specifically tracking progress and creating deliverables/roadmaps/timelines; which will hopefully get easier to judge.
+There are some areas I can improve, like tracking progress and creating deliverables/roadmaps. Hopefully, these will get easier to judge.
 
-Would like to see how transparent/auditable I can make grant work progress in the future by linking directly to issues/prs.
+I would like to see how transparent/auditable I can make grant work progress in the future by linking directly to issues/prs.
+
