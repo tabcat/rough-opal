@@ -377,8 +377,8 @@ This is a living specification for version `1.0-beta` and will continue to be up
 
 *This section will be updated as items are completed*
 
-- [ ] https://github.com/opalsnt/welo/issues/37
-- [ ] https://github.com/opalsnt/specs/issues/1
+- [x] https://github.com/opalsnt/welo/issues/37
+- [x] https://github.com/opalsnt/specs/issues/1
 - [ ] https://github.com/opalsnt/welo/issues/38
 
 ### Next Steps
