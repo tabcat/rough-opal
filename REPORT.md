@@ -24,8 +24,8 @@ All other ToC items have been or will be completed (see [Still Ongoing](#still-o
 
 At the start of the grant, the protocol and implementation shared the name `opal`.
 The grant proposal and the implementation's repo mentioned possible name changes.
-Names have been changed for the protocol and implementation to `opalsnt` and `welo`, respectively.
-The project now has its own Github org located at https://[github.com/opalsnt](github.com/opalsnt).
+Names have been changed for the protocol and implementation to `hldb` and `welo`, respectively.
+The project now has its own Github org located at https://[github.com/hldb](github.com/hldb).
 
 Two significant changes involve removing `Zzzync replicator` and `Heavy Testing` from this grant's roadmap.
 
@@ -124,17 +124,17 @@ Issue: https://github.com/cypsela/opal/issues/8
 
 This required persisting the replicas and indexes of each database. Enables database reads (store index), and writes (replica) immediately upon being opened.
 
-- https://github.com/opalsnt/welo/issues/12
-- https://github.com/opalsnt/welo/commit/a9958dae8d105ca39f666487ee99bcb7cfee621f
-- https://github.com/opalsnt/welo/commit/8bcbd35b8a935edffa13a9e540bd8554d3015255
-- https://github.com/opalsnt/welo/commit/bcc880d197990688491b0bb6ecbb5ec4ffe135f8
+- https://github.com/hldb/welo/issues/12
+- https://github.com/hldb/welo/commit/a9958dae8d105ca39f666487ee99bcb7cfee621f
+- https://github.com/hldb/welo/commit/8bcbd35b8a935edffa13a9e540bd8554d3015255
+- https://github.com/hldb/welo/commit/bcc880d197990688491b0bb6ecbb5ec4ffe135f8
 
 #### ~~Easy Custom Database States~~
 
 Creating custom databases is easy now but can still be much easier, so leaving this unfinished.
 Necessary documentation will be added for this feature when it's ready.
 
-Here is the [key-value store model](https://github.com/opalsnt/welo/blob/master/src/store/keyvalue/model.ts) showing what will be needed.
+Here is the [key-value store model](https://github.com/hldb/welo/blob/master/src/store/keyvalue/model.ts) showing what will be needed.
 It includes a reducer, an init function (which supplies the initial value for the state), action creators, and selectors.
 These are all similar to [Redux](https://redux.js.org/)'s design.
 
@@ -144,10 +144,10 @@ This replicator is a reimplementation of the OrbitDB replicator.
 Welo nodes join a shared pubsub channel unique per database.
 When nodes see peers join the shared channel, nodes attempt to join a direct channel to advertise database updates.
 
-Unlike OrbitDB, the replicator has a specification, and replication tests are [not flaky](https://github.com/opalsnt/welo/commit/3f60808cde11f90f4789a298426e6fdcf9603f98).
+Unlike OrbitDB, the replicator has a specification, and replication tests are [not flaky](https://github.com/hldb/welo/commit/3f60808cde11f90f4789a298426e6fdcf9603f98).
 
-- https://github.com/opalsnt/welo/issues/17
-- https://github.com/opalsnt/welo/issues/20
+- https://github.com/hldb/welo/issues/17
+- https://github.com/hldb/welo/issues/20
 
 #### ~~Zzzync Replicator integration~~
 
@@ -171,13 +171,13 @@ The release used is similar to js-libp2p's pipeline.
 It creates a changelog inside a PR; after it's merged, the workflow cuts a new Github release and publishes it to npm.
 A changelog is generated and the version is bumped by looking at the Conventional Commits in the commit messages.
 
-The [API docs](https://github.com/opalsnt/welo/blob/master/API/welo.md) have been automated.
+The [API docs](https://github.com/hldb/welo/blob/master/API/welo.md) have been automated.
 They look nice but can be improved in the future.
 JSDoc is parsed by the tool to add useful information. The Typescript types are used to show parameters.
 
-- https://github.com/opalsnt/welo/commit/97a7f072ee51a8be1b446c2c6b70c822ae8c4b87
-- https://github.com/opalsnt/welo/issues/34
-- https://github.com/opalsnt/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
+- https://github.com/hldb/welo/commit/97a7f072ee51a8be1b446c2c6b70c822ae8c4b87
+- https://github.com/hldb/welo/issues/34
+- https://github.com/hldb/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
 
 ### Zzzync Development Plans
 
@@ -187,11 +187,11 @@ See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
 
 #### Release Draft Spec for Opal and main modules
 
-- https://github.com/opalsnt/specs/issues/2
+- https://github.com/hldb/specs/issues/2
 
 #### Release Draft Spec for Live Replicator
 
-- https://github.com/opalsnt/specs/issues/7
+- https://github.com/hldb/specs/issues/7
 
 #### ~~Release Draft Spec for Zzzync~~
 
@@ -199,7 +199,7 @@ See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
 
 #### Release completed Specifications for Opal ~~and Zzzync~~ 1.0-betas
 
-- https://github.com/opalsnt/specs/issues/1
+- https://github.com/hldb/specs/issues/1
 
 ## Development Roadmap
 
@@ -207,16 +207,16 @@ See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
 
 #### write unit tests
 
-95% coverage according to [codecov.io](https://app.codecov.io/gh/opalsnt/welo)
+95% coverage according to [codecov.io](https://app.codecov.io/gh/hldb/welo)
 
 There are more than a few testing-related commits; so I won't link them all.
-Feel free to check out the [tests](https://github.com/opalsnt/welo/tree/master/test).
+Feel free to check out the [tests](https://github.com/hldb/welo/tree/master/test).
 I plan on organizing them a bit more in the future.
 
 #### prep for adding features
 
-- https://github.com/opalsnt/welo/issues/10
-- https://github.com/opalsnt/welo/issues/11
+- https://github.com/hldb/welo/issues/10
+- https://github.com/hldb/welo/issues/11
 
 This work had to do with cleaning up code before adding new stuff.
 
@@ -228,66 +228,66 @@ Created Typescript interfaces for the different manifest modules.
 
 Fixed the module registry where modules referenced by the manifest are registered.
 
-- https://github.com/opalsnt/welo/commit/fac797a8b36e51ee5eb4fd0a1f4fce5fd105339c
+- https://github.com/hldb/welo/commit/fac797a8b36e51ee5eb4fd0a1f4fce5fd105339c
 
 ##### rework store module
 
-- https://github.com/opalsnt/welo/commit/567646d872a09695544160b4666e566149f6b72
-- https://github.com/opalsnt/welo/commit/e92a7410ec37c37c346c82ed0294b2c71db5241
+- https://github.com/hldb/welo/commit/567646d872a09695544160b4666e566149f6b72
+- https://github.com/hldb/welo/commit/e92a7410ec37c37c346c82ed0294b2c71db5241
 
 ##### rework classes to use Libp2p's startable interface
 
 Libp2p's startable interface is a Typescript interface for managing the lifecycle of objects.
-To make things easier when working with async start/stop I made [Playable](https://github.com/opalsnt/welo/blob/master/src/utils/playable.ts) that classes inside the project use.
+To make things easier when working with async start/stop I made [Playable](https://github.com/hldb/welo/blob/master/src/utils/playable.ts) that classes inside the project use.
 
-- https://github.com/opalsnt/welo/commit/c9ec979387ae51c0ab14917f85212f0f98a585b
-- https://github.com/opalsnt/welo/commit/1e88f90b4dcd56d749cab9e9a49895b73e5a168
-- https://github.com/opalsnt/welo/commit/397009d5f604e2d3fd02e769982b5ae7b8e10c1
-- https://github.com/opalsnt/welo/commit/7dd3ff883fce2ffd9b937ed062f39ead6f54eb1
+- https://github.com/hldb/welo/commit/c9ec979387ae51c0ab14917f85212f0f98a585b
+- https://github.com/hldb/welo/commit/1e88f90b4dcd56d749cab9e9a49895b73e5a168
+- https://github.com/hldb/welo/commit/397009d5f604e2d3fd02e769982b5ae7b8e10c1
+- https://github.com/hldb/welo/commit/7dd3ff883fce2ffd9b937ed062f39ead6f54eb1
 - 65d549aca0967331aac2952172b73b63f5861801
 
 #### make databases locally persistent
 
-- https://github.com/opalsnt/welo/issues/12
-- https://github.com/opalsnt/welo/commit/a9958dae8d105ca39f666487ee99bcb7cfee621f
-- https://github.com/opalsnt/welo/commit/8bcbd35b8a935edffa13a9e540bd8554d3015255
-- https://github.com/opalsnt/welo/commit/bcc880d197990688491b0bb6ecbb5ec4ffe135f8
+- https://github.com/hldb/welo/issues/12
+- https://github.com/hldb/welo/commit/a9958dae8d105ca39f666487ee99bcb7cfee621f
+- https://github.com/hldb/welo/commit/8bcbd35b8a935edffa13a9e540bd8554d3015255
+- https://github.com/hldb/welo/commit/bcc880d197990688491b0bb6ecbb5ec4ffe135f8
 
 ### Opal Replication and Perf
 
 #### add live replicator (Libp2p pubsub + IPFS)
 
-- https://github.com/opalsnt/welo/issues/20
-- https://github.com/opalsnt/welo/issues/21
-- https://github.com/opalsnt/welo/issues/22
-- https://github.com/opalsnt/welo/issues/23
-- https://github.com/opalsnt/welo/issues/24
-- https://github.com/opalsnt/welo/issues/25
-- https://github.com/opalsnt/welo/issues/26
-- https://github.com/opalsnt/welo/issues/27
-- https://github.com/opalsnt/welo/issues/31
+- https://github.com/hldb/welo/issues/20
+- https://github.com/hldb/welo/issues/21
+- https://github.com/hldb/welo/issues/22
+- https://github.com/hldb/welo/issues/23
+- https://github.com/hldb/welo/issues/24
+- https://github.com/hldb/welo/issues/25
+- https://github.com/hldb/welo/issues/26
+- https://github.com/hldb/welo/issues/27
+- https://github.com/hldb/welo/issues/31
 
 #### test replication and replicated states
 
-- https://github.com/opalsnt/welo/issues/27
+- https://github.com/hldb/welo/issues/27
 
 #### write benchmarks
 
 This is not complete yet. It is part of [Still Ongoing](#still-ongoing).
 Benchmarks will be added for read/write/replication, and metrics will be tracked over time with [github-action-benchmark](https://github.com/benchmark-action/github-action-benchmark).
 
-- https://github.com/opalsnt/welo/issues/37
+- https://github.com/hldb/welo/issues/37
 
 #### automate release with generated API docs and changelog
 
-- https://github.com/opalsnt/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
-- https://github.com/opalsnt/welo/commit/97a7f072ee51a8be1b446c2c6b70c822ae8c4b87
+- https://github.com/hldb/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
+- https://github.com/hldb/welo/commit/97a7f072ee51a8be1b446c2c6b70c822ae8c4b87
 
 See [Automated Release: ci, change log, and api docs](#automated-release-ci-change-log-and-api-docs) for more detail
 
 #### release draft spec for Opal and main modules
 
-- https://github.com/opalsnt/specs/issues/2
+- https://github.com/hldb/specs/issues/2
 
 #### ~~release alpha with expected public API changes~~
 
@@ -309,37 +309,37 @@ I'll be looking at doing the heavier testing with tools like Testground around t
 
 Decided to use [api-documenter](https://api-extractor.com/pages/setup/generating_docs/) instead of [Typedoc](https://typedoc.org) because it had much nicer-looking generated markdown.
 
-- https://github.com/opalsnt/welo/issues/34
-- https://github.com/opalsnt/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
+- https://github.com/hldb/welo/issues/34
+- https://github.com/hldb/welo/commit/b8c9b2a707a4825044c3f8fdd5757fdb05a5d7a6 
 
 See [Automated Release: ci, change log, and api docs](#automated-release-ci-change-log-and-api-docs) for more detail
 
 ##### Write base FAQ.md document for common user questions
 
-https://github.com/opalsnt/welo/issues/39
+https://github.com/hldb/welo/issues/39
 
 ##### Basic Tutorial document added to repo or blogged
 
-https://github.com/opalsnt/welo/issues/40
+https://github.com/hldb/welo/issues/40
 
 ##### NodeJS ~~and Create React App~~ examples
 
 Welo has not been tested with browsers yet.
-Support is tracked in [browser tests issue](https://github.com/opalsnt/welo/issues/42).
+Support is tracked in [browser tests issue](https://github.com/hldb/welo/issues/42).
 
-- https://github.com/opalsnt/welo/issues/41
+- https://github.com/hldb/welo/issues/41
 
 #### Release Opal ~~and Zzzync~~ 1.0-beta
 
 The 1.0.0 release was prematurely cut while trying out different release pipelines.
 
-- https://github.com/opalsnt/welo/releases/tag/v1.0.0
+- https://github.com/hldb/welo/releases/tag/v1.0.0
 
-Latest release is now [v1.0.2](https://github.com/opalsnt/welo/releases/tag/v1.0.2)
+Latest release is now [v1.0.2](https://github.com/hldb/welo/releases/tag/v1.0.2)
 
 ##### completed protocol specification
 
-- https://github.com/opalsnt/specs/issues/10
+- https://github.com/hldb/specs/issues/10
 
 ##### typescript implementation (with public API locked until 1.0)
 
@@ -350,8 +350,8 @@ However, Steve, my partner on [Cypsela](https://github.com/cypsela), recommended
 
 It helped a bunch and likely sped up development pretty considerably.
 
-- https://github.com/opalsnt/welo/issues/3
-- https://github.com/opalsnt/welo/commit/d548bf51f31771a7c6f1837d54dd5fbcad21502d
+- https://github.com/hldb/welo/issues/3
+- https://github.com/hldb/welo/commit/d548bf51f31771a7c6f1837d54dd5fbcad21502d
 
 ## Closing
 
@@ -377,9 +377,9 @@ This is a living specification for version `1.0-beta` and will continue to be up
 
 *This section will be updated as items are completed*
 
-- [x] https://github.com/opalsnt/welo/issues/37
-- [x] https://github.com/opalsnt/specs/issues/1
-- [ ] https://github.com/opalsnt/welo/issues/38
+- [x] https://github.com/hldb/welo/issues/37
+- [x] https://github.com/hldb/specs/issues/1
+- [ ] https://github.com/hldb/welo/issues/38
 
 ### Next Steps
 
