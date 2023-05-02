@@ -25,7 +25,7 @@ All other ToC items have been or will be completed (see [Still Ongoing](#still-o
 At the start of the grant, the protocol and implementation shared the name `opal`.
 The grant proposal and the implementation's repo mentioned possible name changes.
 Names have been changed for the protocol and implementation to `hldb` and `welo`, respectively.
-The project now has its own Github org located at https://[github.com/hldb](github.com/hldb).
+The project now has its own Github org located at [github.com/hldb](github.com/hldb).
 
 Two significant changes involve removing `Zzzync replicator` and `Heavy Testing` from this grant's roadmap.
 
