@@ -365,7 +365,7 @@ This is a living specification for version `1.0-beta` and will continue to be up
 
 - [x] https://github.com/hldb/welo/issues/37
 - [x] https://github.com/hldb/specs/issues/1
-- [ ] https://github.com/hldb/welo/issues/38
+- [ ] ~~https://github.com/hldb/welo/issues/38~~
 
 ### Next Steps
 
