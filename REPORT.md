@@ -39,21 +39,7 @@ Two significant changes involve removing `Zzzync replicator` and `Heavy Testing`
     - [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
     - [~~IPLD Schema Validation  (if ready in javascript)~~](#ipld-schema-validation-if-ready-in-javascript)
     - [Automated Release: ci, change log, and api docs](#automated-release-ci-change-log-and-api-docs)
-  - [`Zzzync` Development Plans]()
-    - begin design of replicator
-    - ~~choose a design to start building~~
-    - ~~set up linting/formatting~~
-    - ~~configure typescript~~
-    - ~~write implementation of design~~
-    - ~~write unit tests~~
-    - ~~test interop with Opal~~
-    - ~~write benchmarks~~
-    - ~~automate release with generated api docs and changelog~~
-    - ~~release alpha with expected public api changes~~
-    - ~~testing with Opal in testground network simulation~~
-    - ~~stress-test and benchmark~~
-    - ~~check for bugs and perf improvements~~
-    - ~~release beta with public api locked~~
+  - [`Zzzync` Development Plans](#zzzync-development-plans)
   - [`Opal-Spec` 1.0-beta]()
     - [Release Draft Spec for Opal and main modules](#release-draft-spec-for-opal-and-main-modules)
     - [Release Draft Spec for Live Replicator](#release-draft-spec-for-live-replicator)
@@ -181,7 +167,7 @@ JSDoc is parsed by the tool to add useful information. The Typescript types are 
 
 ### Zzzync Development Plans
 
-See [~~Zzzync Replicator integration~~](#zzzync-replicator-integration)
+See [~~Zzzync Development Plans~~](https://github.com/tabcat/zzzync/issues/2)
 
 ### Opal-Spec 1.0-beta
 
@@ -408,3 +394,25 @@ There are some areas I can improve, like tracking progress and creating delivera
 
 I would like to see how transparent/auditable I can make grant work progress in the future by linking directly to issues/prs.
 
+## Amendment 1
+
+Zzzync is being added back with a demo web app to close out the grant. This list will link directly to the relevant issues for better transparency.
+
+- Development Roadmap
+  - [`Zzzync` Initial Implementation](https://github.com/tabcat/zzzync/issues/6)
+    - [begin and choose design](https://github.com/tabcat/zzzync/issues/7)
+    - [write spec](https://github.com/tabcat/zzzync/issues/8)
+    - [configure project repo](https://github.com/tabcat/zzzync/issues/9)
+    - [write implementation](https://github.com/tabcat/zzzync/issues/10)
+    - [write tests](https://github.com/tabcat/zzzync/issues/11)
+    - [test interop with Welo](https://github.com/tabcat/zzzync/issues/12)
+    - [automate release and changelog](https://github.com/tabcat/zzzync/issues/13)
+    - [automate API docs](https://github.com/tabcat/zzzync/issues/14)
+    - [complete protocol spec](https://github.com/tabcat/zzzync/issues/15)
+    - [release 1.0-beta](https://github.com/tabcat/zzzync/issues/16)
+  - [Zzzync Replicator integration](https://github.com/hldb/welo/issues/65)
+  - [Welo + Zzzync Demo Webapp and Blog post](https://github.com/tabcat/rough-opal/issues/1)
+
+ETA: June 17th
+Grant budget is still capped at 30K
+This amendment will count as the second two milestones, with the first two marked as complete.
