@@ -414,5 +414,7 @@ Zzzync is being added back with a demo web app to close out the grant. This list
   - [Welo + Zzzync Demo Webapp and Blog post](https://github.com/tabcat/rough-opal/issues/1)
 
 ETA: June 17th
+
 Grant budget is still capped at 30K
+
 This amendment will count as the second two milestones, with the first two marked as complete.
